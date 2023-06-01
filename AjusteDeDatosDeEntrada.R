@@ -237,7 +237,7 @@ z_critico <- qnorm(1 - (1 - 0.95) / 2)
 n_4 <- ceiling(((z_critico^2)*(std_4^2))/(D_4^2))
 print(n_4)
 
-Tiempos_entre_llegadas <- datos_tiempo_entre_llegadas$Tiempo_total_segundos[1:153]
+Tiempos_entre_llegadas <- datos_tiempo_entre_llegadas$Tiempo_total_segundos[1:n_4]
 Tiempos_entre_llegadas
 # Cálculo de estadísticos descriptivos básicos
 summary(Tiempos_entre_llegadas)
@@ -263,10 +263,10 @@ fit_4_gamma<- fitdist(Tiempos_entre_llegadas,"gamma")
 summary(fit_4_lognormal)
 summary(fit_4_weibull)
 summary(fit_4_gamma)
-"summary(fit_4_normal)
-summary(fit_4_exp)
-summary(fit_4_logis)
-summary(fit_4_unif)"
+#summary(fit_4_normal)
+#summary(fit_4_exp)
+#summary(fit_4_logis)
+#summary(fit_4_unif)
 
 win.graph(width=5,height=5,pointsize=15) 
 plot(fit_4_lognormal)
@@ -290,7 +290,6 @@ gofstat(list(fit_4_lognormal,fit_4_weibull,fit_4_gamma))
 #--------------------------------------------------------------------------#
 #--------------------------------------------------------------------------#
 
-
 #Fuente de entrada: Tiemps de pago Nequi
 
 datos_tiempo_de_pago_nequi <- read_excel(ruta_archivo, sheet = "Tiempo_de_pago_nequi")
@@ -306,7 +305,7 @@ z_critico <- qnorm(1 - (1 - 0.95) / 2)
 n_5 <- ceiling(((z_critico^2)*(std_5^2))/(D_5^2))
 print(n_5)
 
-Tiempos_de_pago_nequi <- datos_tiempo_de_pago_nequi$Tiempo_total_segundos[1:54]
+Tiempos_de_pago_nequi <- datos_tiempo_de_pago_nequi$Tiempo_total_segundos[1:n_5]
 Tiempos_de_pago_nequi
 # Cálculo de estadísticos descriptivos básicos
 summary(Tiempos_de_pago_nequi)
@@ -323,19 +322,19 @@ descdist(Tiempos_de_pago_nequi,boot=100)
 fit_5_lognormal<-fitdist(Tiempos_de_pago_nequi,"lnorm")
 fit_5_weibull<-fitdist(Tiempos_de_pago_nequi,"weibull")
 fit_5_gamma<- fitdist(Tiempos_de_pago_nequi,"gamma")
-fit_5_normal<- fitdist(Tiempos_de_pago_nequi,"norm")
-fit_5_exp<- fitdist(Tiempos_de_pago_nequi,"exp")
-fit_5_logis<- fitdist(Tiempos_de_pago_nequi,"logis")
-fit_5_unif<- fitdist(Tiempos_de_pago_nequi,"unif")
+#fit_5_normal<- fitdist(Tiempos_de_pago_nequi,"norm")
+#fit_5_exp<- fitdist(Tiempos_de_pago_nequi,"exp")
+#fit_5_logis<- fitdist(Tiempos_de_pago_nequi,"logis")
+#fit_5_unif<- fitdist(Tiempos_de_pago_nequi,"unif")
 
 
 summary(fit_5_lognormal)
 summary(fit_5_weibull)
 summary(fit_5_gamma)
-summary(fit_5_normal)
-summary(fit_5_exp)
-summary(fit_5_logis)
-summary(fit_5_unif)
+#summary(fit_5_normal)
+#summary(fit_5_exp)
+#summary(fit_5_logis)
+#summary(fit_5_unif)
 
 win.graph(width=5,height=5,pointsize=15) 
 plot(fit_5_lognormal)
@@ -354,4 +353,4 @@ ppcomp  (list(fit_5_lognormal, fit_5_weibull,fit_5_gamma), legendtext = plot.leg
 
 gofstat(list(fit_5_lognormal,fit_5_weibull,fit_5_gamma))
 
-#Mejor funcion gamma
+#Mejor funcion lognormal 
